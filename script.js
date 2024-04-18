@@ -8,14 +8,15 @@ const btn = document.querySelector('button');
 
 //set values
 let timer;
-let maxTime = 60;
+let maxTime = 30;
 let timeLeft = maxTime;
 let charIndex = 0;
 let mistake = 0;
 let isTyping = false;
 
 function loadParagraph(){
-    const paragraph = ["Use a low flow shower head, aerators, or a cistern that measures how much water is flushed into the toilet. This will help you save water and reduce your water bill Use a low flow shower head, aerators, or a cistern that measures how much water is flushed into the toilet. This will help you save water and reduce your water bill."];
+    const paragraph = ["Hey everyone, its me typing test. I am here to help you to improve your typing speed. Just start typing and see the magic. Good Luck!The quick brown fox jumps over the lazy dog","Its HRS and I am here to help you to improve your typing speed. Just start typing and see the magic. Good Luck!The quick brown fox jumps over the lazy dog","chess is a two-player strategy board game played on a checkered board with 64 squares arranged in an 8×8 grid. The game is played by millions of people worldwide. ","This is made by HRS and I am here to help you to improve your typing speed. Just start typing and see the magic. Good Luck!", "You can follow me on linkedin as Harsh Kumar and on github as HrsFlex.","Web development is a skill that is in high demand. It is a skill that is used in many industries, including marketing, design, and software development. If you are interested in learning web development, there are many resources available to help you get started."];
+    
     
     const randomIndex = Math.floor(Math.random() * paragraph.length);
     typingText.innerHTML='';
@@ -64,8 +65,35 @@ function initTime(){
         let wpmVal = Math.round(((charIndex - mistake)/5 )/(maxTime - timeLeft)*60);
         wpm.innerText = wpmVal;
     }
-else{
-    clearInterval(timer);
+    else{
+        clearInterval(timer);
+    }
+
+    const char = typingText.querySelectorAll('span');
+    const typedChar = input.value.charAt(charIndex);
+
+    if (charIndex < char.length && timeLeft > 0) {
+        if (!isTyping) {
+            timer = setInterval(initTime, 1000);
+            isTyping = true;
+        }
+
+        if (char[charIndex].innerText === typedChar) {
+            char[charIndex].classList.add('correct');
+            char[charIndex].classList.remove('incorrect');
+        } else {
+            mistake++;
+            char[charIndex].classList.add('incorrect');
+            char[charIndex].classList.remove('correct');
+        }
+
+        charIndex++;
+        char[charIndex].classList.add('active');
+        mistakes.innerText = mistake;
+        cpm.innerText = charIndex - mistake;
+    } else {
+        clearInterval(timer);
+        input.value = '';
     }
 }
 
@@ -77,7 +105,7 @@ function reset(){
     input.value='';
     charIndex = 0;
     mistake=0;
-    isTyping=false;
+    isTyping= false;
     wpm.innerText=0;
     cpm.innerText=0;
     mistakes.innerText=0;
