@@ -51,5 +51,15 @@ body{
     width: 105px;
     outline: none;
     border: none;
-    color: 3fff;
+    color: 3#fff;
+    background:orange ;
+    padding: 8px 0;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+
+}
+.content button:active{
+    transform: scale(0.97);
 }
