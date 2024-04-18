@@ -62,7 +62,7 @@ function initTime(){
     if(timeLeft > 0){
         timeLeft--;
         time.innerText = timeLeft;
-        let wpmVal = Math.round(((charIndex - mistake)/5 )/(maxTime - timeLeft)*60);
+        let wpmVal = Math.round(((charIndex - mistake)/5 )/(maxTime - timeLeft)*30);
         wpm.innerText = wpmVal;
     }
     else{
