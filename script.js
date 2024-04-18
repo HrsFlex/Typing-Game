@@ -6,7 +6,7 @@ const wpm = document.querySelector('.wap span');
 const cpm = document.querySelector('.cpm span');
 const btn = document.querySelector('button');
 
-//set values
+
 let timer;
 let maxTime = 30;
 let timeLeft = maxTime;
@@ -30,7 +30,7 @@ function loadParagraph(){
     
 }
 
-//Handle user input
+
 
 function initTyping(){
     const char = typingText.querySelectorAll('span');
