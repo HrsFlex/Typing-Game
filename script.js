@@ -1,7 +1,7 @@
 const typingText = document.querySelector('.typing-text p');
 const input = document.querySelector('.wrapper .input-field');
 const time = document.querySelector('.time span b');
-const mistakes = document.querySelector('.mistakes span');
+const mistakes = document.querySelector('.mistake span');
 const wpm = document.querySelector('.wap span');
 const cpm = document.querySelector('.cpm span');
 const btn = document.querySelector('button');
@@ -15,7 +15,7 @@ let mistake = 0;
 let isTyping = false;
 
 function loadParagraph(){
-    const paragraph = ["Use a low flow shower head, aerators, or a cistern that measures how much water is flushed"];
+    const paragraph = ["Use a low flow shower head, aerators, or a cistern that measures how much water is flushed into the toilet. This will help you save water and reduce your water bill Use a low flow shower head, aerators, or a cistern that measures how much water is flushed into the toilet. This will help you save water and reduce your water bill."];
     
     const randomIndex = Math.floor(Math.random() * paragraph.length);
     typingText.innerHTML='';
@@ -26,12 +26,13 @@ function loadParagraph(){
     }
     typingText.querySelectorAll('span')[0].classList.add('active');
     document.addEventListener('keydown',()=>{input.focus()});
+    
 }
 
 //Handle user input
 
 function initTyping(){
-    const char = typingText.querySelector('span');
+    const char = typingText.querySelectorAll('span');
     const typedChar= input.value.charAt(charIndex);
     if(charIndex < char.length && timeLeft >0){
 
